@@ -101,4 +101,4 @@ if [ -e $HOME/.aliases ]; then
 	[ -n "$PS1" ] && . $HOME/.aliases
 fi
 
-
+code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}
