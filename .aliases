@@ -1,0 +1,15 @@
+# Command Alias
+alias list-alias='cat .aliases'
+
+# Alias for directory 
+
+alias working='cd ../../../../Volumes/WORKING/'
+alias project='cd ../../../../Volumes/WORKING/project'
+alias testDotfile='cd ../../../../Volumes/WORKING/working/chart-svg'
+alias ~='cd ~'
+
+# Alias for config file
+
+alias zsh-config='vim .zshrc'
+alias vim-config='vim .vimrc'
+alias alias-config='vim .aliases'
