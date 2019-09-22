@@ -7,17 +7,33 @@ endif
 set backspace=indent,eol,start
 
 call plug#begin('~/.vim/plugged')
+
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'sheerun/vim-polyglot'
+Plug 'itchyny/lightline.vim'
+Plug 'itchyny/vim-gitbranch'
+
+" For fuzzy search file 
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+" For view git diff
+Plug 'tpope/vim-fugitive'
+call plug#end()
+
+
+
+
 syntax on
 set laststatus=2
 set noshowmode
 set number
-
-    Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-    Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-    Plug 'sheerun/vim-polyglot'
-    Plug 'itchyny/lightline.vim'
-    Plug 'itchyny/vim-gitbranch'
-
+set nobackup
+set nowritebackup
+set mouse=a " enable mouse for all mode
+set noswapfile
+set autoindent
+set smartindent
 set background=dark
 colorscheme edge
 let g:lightline = {
@@ -31,4 +47,4 @@ let g:lightline = {
       \ },
       \ }
     map <C-\> :NERDTreeToggle<CR>
-call plug#end()
+
