@@ -67,9 +67,11 @@ set backspace=indent,eol,start
 " Remap key 
 
 let mapleader=" "
+inoremap jk <Esc>
 map <C-\> :NERDTreeToggle<CR>
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>s :w<CR>
+nnoremap ; :
 " Tab controll
 nnoremap <Leader>r :tabn<CR>
 nnoremap <Leader>u :tabp<CR>
