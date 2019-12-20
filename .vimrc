@@ -81,7 +81,7 @@ let NERDTreeMinimalUI=1
 
 " Remap key 
 let mapleader=" "
-noremap jk <ESC>
+inoremap jk <ESC>
 nnoremap ; :
 map <C-\> :NERDTreeToggle<CR>
 nnoremap <Leader>f :Files<CR>
