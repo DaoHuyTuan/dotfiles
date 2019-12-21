@@ -3,6 +3,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'sheerun/vim-polyglot'
 Plug 'itchyny/lightline.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " theme
 Plug 'arcticicestudio/nord-vim'
 " Plug 'tyrannicaltoucan/vim-quantum'
@@ -25,7 +26,7 @@ call plug#end()
 let g:gitgutter_sign_allow_clobber = 1
 syntax on
 set signcolumn=yes
-set updatetime=100
+set updatetime=10
 set encoding=UTF-8
 set laststatus=2
 set noshowmode
@@ -45,11 +46,21 @@ set shiftwidth=2
 set shiftround
 set expandtab
 set hidden
+set guicursor=
 set background=dark
 " remove delay when change mode
 set ttimeout
-set ttimeoutlen=10
+set ttimeoutlen=100
 set termguicolors
+" Better display for messages
+set cmdheight=2
+" You will have bad experience for diagnostic messages when it's default 4000.
+set updatetime=300
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
 
 colorscheme nord
 let g:prettier#autoformat = 0
@@ -86,10 +97,6 @@ nnoremap ; :
 map <C-\> :NERDTreeToggle<CR>
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>s :w<CR>
-" Tab controll
-nnoremap <Leader>r :tabn<CR>
-nnoremap <Leader>u :tabp<CR>
-nnoremap <Leader>x :tabclose<CR>
 " Split screen 
 nnoremap <Leader>v :vsplit<CR>
 nnoremap <Leader>b :split<CR>
@@ -100,5 +107,24 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" In insert or command mode, move normally by using Ctrl
+inoremap <C-h> <Left>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-l> <Right>
+cnoremap <C-h> <Left>
+cnoremap <C-j> <Down>
+cnoremap <C-k> <Up>
+cnoremap <C-l> <Right>
 " clear hight light 
-nnoremap <esc> :noh<return><esc>
+
+" map key for coc 
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"\
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
